@@ -1,0 +1,12 @@
+[Unit]
+Description=SSD1306 I2C Device Setup
+After=sys-bus-i2c-devices-i2c\x2d1.device
+Wants=sys-bus-i2c-devices-i2c\x2d1.device
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo "ssd1306 0x3c" > /sys/bus/i2c/devices/i2c-1/new_device'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
